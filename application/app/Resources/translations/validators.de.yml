@@ -1,0 +1,5 @@
+contact:
+  email:
+    notvalid: "Die E-Mail ist keine gültige E-Mail."
+  message:
+    maxlength: "Ihre Nachricht darf nicht länger als 1000 Zeichen sein."

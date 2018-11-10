@@ -1,0 +1,5 @@
+## YAML Template.
+apikey:
+  error: "API key error."
+form:
+  error: "Form validation error."
