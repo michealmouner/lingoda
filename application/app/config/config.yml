@@ -74,7 +74,7 @@ sensio_framework_extra:
 
    
 nelmio_api_doc:
-    name: 'Home 24 core API documentation'
+    name: 'Lingoda core API documentation'
     motd:
         template: nilmo-doc.html.twig
     request_listener:

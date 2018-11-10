@@ -19,7 +19,7 @@ class ContactController extends BaseController
      * @ApiDoc(
      *  description="send contact us form to the backenddfsdfsdfsfsd",
      *  tags={
-     *      "testing"
+     *      "tested"
      *  },
      *  methods="POST",
      *  section="ContactUs",
