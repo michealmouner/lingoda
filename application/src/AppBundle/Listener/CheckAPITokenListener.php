@@ -31,7 +31,8 @@ class CheckAPITokenListener
     {
         $request = $event->getRequest();
         $request->setLocale($request->getPreferredLanguage());
-        if (strpos($request->getRequestUri(), '/api/doc') === false) {
+
+        if (strpos($request->getRequestUri(), '/api/doc') === false && strpos($request->getRequestUri(), '/_profiler') === false && strpos($request->getRequestUri(), '/_wdt') === false) {
             $apiKeyIndex = $request->headers->get('x-api-key');
             if ($apiKeyIndex != $this->apiKey) {
                 $apiProblem = new \AppBundle\Api\ApiProblem(401);

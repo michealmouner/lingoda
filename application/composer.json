@@ -44,6 +44,7 @@
         "symfony/phpunit-bridge": "^3.0"
     },
     "scripts": {
+        "test": "./vendor/bin/simple-phpunit",
         "symfony-scripts": [
             "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
