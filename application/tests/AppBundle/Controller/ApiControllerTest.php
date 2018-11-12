@@ -62,7 +62,6 @@ class ApiControllerTest extends WebTestCase
     {
         /* @var $client \Symfony\Bundle\FrameworkBundle\Client */
         self::$staticClient->request(Request::METHOD_POST, '/api/login', [], [], [
-//            'HTTP_X_API_KEY'       => $this->container->getParameter('api_key'),
             "HTTP_ACCEPT_LANGUAGE" => 'en'
         ]);
 

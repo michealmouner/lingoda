@@ -32,18 +32,19 @@ class CheckAPITokenListener
         $request = $event->getRequest();
         $request->setLocale($request->getPreferredLanguage());
 
-        if (strpos($request->getRequestUri(), '/api/doc') === false && strpos($request->getRequestUri(), '/_profiler') === false && strpos($request->getRequestUri(), '/_wdt') === false) {
+        if(strpos($request->getRequestUri(), '/api/doc') === false && $request->getRequestUri() != '/' && strpos($request->getRequestUri(), '/_profiler') === false && strpos($request->getRequestUri(), '/_wdt') === false)
+        {
             $apiKeyIndex = $request->headers->get('x-api-key');
-            if ($apiKeyIndex != $this->apiKey) {
-                $apiProblem = new \AppBundle\Api\ApiProblem(401);
-                $apiProblem->set('message', $this->translator->trans('apikey.error',[],null,$request->getPreferredLanguage()));
+            if($apiKeyIndex != $this->apiKey)
+            {
+                $apiProblem = new \AppBundle\Api\ApiProblem(Response::HTTP_UNAUTHORIZED);
+                $apiProblem->set('message', $this->translator->trans('apikey.error', [], null, $request->getPreferredLanguage()));
                 $responseFactory = new \AppBundle\Api\ResponseFactory();
                 $response = $responseFactory->createResponse($apiProblem);
                 $event->setResponse($response);
                 return;
             }
-            $request->attributes->set('requestFrom', $apiKeyIndex);
-
         }
     }
+
 }
