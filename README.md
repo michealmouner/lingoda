@@ -39,9 +39,9 @@ GET|/|redirect to api documentation for now
 - Added to this docker another image, mysql_test to be the testing database
 - Created some basics handling for the API errors in general
 - Create 10 Test cases 42 asserions 
-- Adding translation to APIs .. all you need to send Accept-Language en|de in headers
+- Adding translation to API form validations and error handling.. all you need to send Accept-Language en|de in headers
 - Create migrations for the database
-- for contactus api I create FormType and submit and validate data throw Symfony form
+- For contactus api I create FormType and submit and validate data throw Symfony form
 - I created contactus list to just see the last 10 records to make sure everything working
 
 
