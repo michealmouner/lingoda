@@ -32,7 +32,7 @@ class CheckAPITokenListener
         $request = $event->getRequest();
         $request->setLocale($request->getPreferredLanguage());
 
-        if(strpos($request->getRequestUri(), '/api/doc') === false && $request->getRequestUri() != '/' && strpos($request->getRequestUri(), '/_profiler') === false && strpos($request->getRequestUri(), '/_wdt') === false)
+        if(strpos($request->getRequestUri(), '/api/doc') === false && $request->getRequestUri() != '/' && $request->getRequestUri() != '/app_dev.php' && strpos($request->getRequestUri(), '/_profiler') === false && strpos($request->getRequestUri(), '/_wdt') === false)
         {
             $apiKeyIndex = $request->headers->get('x-api-key');
             if($apiKeyIndex != $this->apiKey)

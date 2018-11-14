@@ -2,7 +2,6 @@
 
 namespace AppBundle\Controller;
 
-
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Nelmio\ApiDocBundle\Annotation\ApiDoc;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -17,7 +16,7 @@ class ContactController extends BaseController
     /**
      * add contact us
      * @ApiDoc(
-     *  description="send contact us form to the backenddfsdfsdfsfsd",
+     *  description="send contact us form to the backend",
      *  tags={
      *      "tested"
      *  },
@@ -56,6 +55,36 @@ class ContactController extends BaseController
             return $this->createSuccessfulApiResponse($contact);
         }
         $this->throwApiProblemValidationException($form, 400);
+    }
+
+    /**
+     * list contact us
+     * @ApiDoc(
+     *  description="list contacts from database",
+     *  tags={
+     *      "testing"
+     *  },
+     *  methods="POST",
+     *  section="ContactUs",
+     *  statusCodes={
+     *      200="Returned on success",
+     *      401="Unauthorized",
+     *      404="Not Found"
+     *  }
+     * )
+     * 
+     * @author Micheal Mounir <micheal.mouner@gmail.com>
+     * @param Request $request
+     * @return JsonResponse
+     *
+     * @Route("/api/contact",methods={"GET"})
+     * @Method("GET")
+     */
+    public function listAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $contacts = $em->getRepository("AppBundle:Contact")->findBy([], ['id' => 'DESC'], 10);
+        return $this->createSuccessfulApiResponse($contacts);
     }
 
 }

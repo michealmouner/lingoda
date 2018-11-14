@@ -16,11 +16,11 @@ class DefautlController extends BaseController
     /**
      * home page
      * @Route("/",methods={"GET"})
-     * @Method("POST")
+     * @Method("GET")
      */
-    public function addAction(Request $request)
+    public function indexAction(Request $request)
     {
-        $this->redirect("/api/doc");
+        return $this->redirect("/api/doc");
     }
 
 }

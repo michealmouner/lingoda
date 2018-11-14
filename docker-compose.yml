@@ -10,6 +10,7 @@ services:
     mysql:
       image: mysql:5.7
       working_dir: /application
+      container_name: lingoda-mysql
       volumes:
         - ./application:/application
       environment:
@@ -21,6 +22,7 @@ services:
         - "8092:3306"
     mysql_test:
       image: mysql:5.7
+      container_name: lingoda-mysql-test
       working_dir: /application
       volumes:
         - ./application:/application
@@ -34,6 +36,7 @@ services:
 
     webserver:
       image: nginx:alpine
+      container_name: lingoda-webserver
       working_dir: /application
       volumes:
           - .:/application
@@ -43,6 +46,7 @@ services:
 
     php-fpm:
       build: phpdocker/php-fpm
+      container_name: lingoda-php-fpm
       working_dir: /application
       volumes:
         - ./application:/application
